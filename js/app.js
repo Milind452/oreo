@@ -155,6 +155,20 @@ signupBtn.addEventListener("click", (e) => {
             emailIssues.length === 0 &&
             nameIssues.length === 0
         ) {
+            firebase
+                .auth()
+                .createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                    // ..
+                });
             console.log("SIGNUP");
             console.log("Name: " + name);
             console.log("Email: " + email);
