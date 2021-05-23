@@ -76,6 +76,7 @@ loginBtn.addEventListener('click', e => {
         document.querySelector('.box__fields').insertAdjacentElement('beforeend', signupBtn.parentElement);
         loginBtn.style.width = '300px';
         signupBtn.style.width = '250px';
+        nameField.required = false;
     } else {
         const email = emailField.value;
         const password = passwordField.value;
@@ -104,6 +105,7 @@ signupBtn.addEventListener('click', e => {
         document.querySelector('.box__fields').insertAdjacentElement('beforeend', loginBtn.parentElement);
         loginBtn.style.width = '250px';
         signupBtn.style.width = '300px';
+        nameField.required = true;
     } else {
         const name = nameField.value;
         const email = emailField.value;
