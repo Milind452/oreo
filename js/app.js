@@ -16,3 +16,14 @@ loginBtn.addEventListener('click', e => {
     const password = passwordField.value;
     console.log("login")
 })
+
+signupBtn.addEventListener('click', e => {
+    const nameFieldClassList = nameFieldDiv.classList
+    if(nameFieldClassList.contains('display-none')) {
+        nameFieldClassList.remove('display-none')
+    }
+    const name = nameField.value;
+    const email = emailField.value;
+    const password = passwordField.value;
+    console.log('Create account')
+})
