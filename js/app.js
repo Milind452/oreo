@@ -30,6 +30,43 @@ IssueTracker.prototype = {
     }
 };
 
+function checkEmailRequirements(email, emailIssueTracker) {
+    if(!email.match(/[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+/g)) {
+        emailIssueTracker.add("enter valid email id")
+    }
+}
+
+function checkPasswordRequirements(password, passwordIssueTracker) {
+    if (password.length < 8) {
+      passwordIssueTracker.add("fewer than 8 characters");
+    } else if (password.length > 100) {
+      passwordIssueTracker.add("greater than 100 characters");
+    }
+
+    if (!password.match(/[\!\@\#\$\%\^\&\*]/g)) {
+      passwordIssueTracker.add("missing a symbol (!, @, #, $, %, ^, &, *)");
+    }
+
+    if (!password.match(/\d/g)) {
+      passwordIssueTracker.add("missing a number");
+    }
+
+    if (!password.match(/[a-z]/g)) {
+      passwordIssueTracker.add("missing a lowercase letter");
+    }
+
+    if (!password.match(/[A-Z]/g)) {
+      passwordIssueTracker.add("missing an uppercase letter");
+    }
+
+    const illegalCharacterGroup = password.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
+    if (illegalCharacterGroup) {
+      illegalCharacterGroup.forEach(function (illegalChar) {
+        passwordIssueTracker.add("includes illegal character: " + illegalChar);
+      });
+    }
+}
+
 loginBtn.addEventListener('click', e => {
     // e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList;
@@ -44,41 +81,8 @@ loginBtn.addEventListener('click', e => {
         const password = passwordField.value;
         let passwordIssueTracker = new IssueTracker();
         let emailIssueTracker = new IssueTracker();
-        (function checkEmailRequirements() {
-            if(!email.match(/[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+/g)) {
-                emailIssueTracker.add("enter valid email id")
-            }
-        })();
-        (function checkPasswordRequirements() {
-            if (password.length < 8) {
-              passwordIssueTracker.add("fewer than 8 characters");
-            } else if (password.length > 100) {
-              passwordIssueTracker.add("greater than 100 characters");
-            }
-        
-            if (!password.match(/[\!\@\#\$\%\^\&\*]/g)) {
-              passwordIssueTracker.add("missing a symbol (!, @, #, $, %, ^, &, *)");
-            }
-        
-            if (!password.match(/\d/g)) {
-              passwordIssueTracker.add("missing a number");
-            }
-        
-            if (!password.match(/[a-z]/g)) {
-              passwordIssueTracker.add("missing a lowercase letter");
-            }
-        
-            if (!password.match(/[A-Z]/g)) {
-              passwordIssueTracker.add("missing an uppercase letter");
-            }
-        
-            const illegalCharacterGroup = password.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
-            if (illegalCharacterGroup) {
-              illegalCharacterGroup.forEach(function (illegalChar) {
-                passwordIssueTracker.add("includes illegal character: " + illegalChar);
-              });
-            }
-        })();
+        checkEmailRequirements(email, emailIssueTracker);
+        checkPasswordRequirements(password, passwordIssueTracker);
         const emailIssues = emailIssueTracker.retrieve();
         const passwordIssues = passwordIssueTracker.retrieve();
         emailField.setCustomValidity(emailIssues)
