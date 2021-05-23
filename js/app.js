@@ -39,12 +39,13 @@ loginBtn.addEventListener('click', e => {
         document.querySelector('.box__fields').insertAdjacentElement('beforeend', signupBtn.parentElement);
         loginBtn.style.width = '300px';
         signupBtn.style.width = '250px';
+    } else {
+        const email = emailField.value;
+        const password = passwordField.value;
+        console.log("LOGIN")
+        console.log("Email: " + email)
+        console.log("Password: " + password)
     }
-    const email = emailField.value;
-    const password = passwordField.value;
-    console.log("LOGIN")
-    console.log("Email: " + email)
-    console.log("Password: " + password)
 })
 
 signupBtn.addEventListener('click', e => {
@@ -56,12 +57,13 @@ signupBtn.addEventListener('click', e => {
         document.querySelector('.box__fields').insertAdjacentElement('beforeend', loginBtn.parentElement);
         loginBtn.style.width = '250px';
         signupBtn.style.width = '300px';
+    } else {
+        const name = nameField.value;
+        const email = emailField.value;
+        const password = passwordField.value;
+        console.log('SIGNUP')
+        console.log("Name: " + name)
+        console.log("Email: " + email)
+        console.log("Password: " + password)
     }
-    const name = nameField.value;
-    const email = emailField.value;
-    const password = passwordField.value;
-    console.log('SIGNUP')
-    console.log("Name: " + name)
-    console.log("Email: " + email)
-    console.log("Password: " + password)
 })
