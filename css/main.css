@@ -110,6 +110,14 @@ h2 span {
     display: none;
 }
 
+.wrapper {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+}
+
 input {
     font-size: 17px;
     padding: 14px 16px;
