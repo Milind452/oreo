@@ -102,6 +102,19 @@ loginBtn.addEventListener("click", (e) => {
         emailField.setCustomValidity(emailIssues);
         passwordField.setCustomValidity(passwordIssues);
         if (passwordIssues.length === 0 && emailIssues.length == 0) {
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Signed in
+                    var user = userCredential.user;
+                    // ...
+                })
+                .catch((error) => {
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    console.log(errorCode, errorMessage);
+                });
             console.log("LOGIN");
             console.log("Email: " + email);
             console.log("Password: " + password);
