@@ -21,7 +21,11 @@ signupBtn.addEventListener('click', e => {
     e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList
     if(nameFieldClassList.contains('display-none')) {
-        nameFieldClassList.remove('display-none')
+        nameFieldClassList.remove('display-none');
+        loginBtn.parentElement.remove();
+        document.querySelector('.box__fields').insertAdjacentElement('beforeend', loginBtn.parentElement);
+        loginBtn.style.width = '250px';
+        signupBtn.style.width = '300px';
     }
     const name = nameField.value;
     const email = emailField.value;
