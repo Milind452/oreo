@@ -116,6 +116,13 @@ h2 span {
 
 .icon {
     position: absolute;
+    padding: 10px;
+    color: gray;
+    min-width: 50px;
+    text-align: center;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 input {
