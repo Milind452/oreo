@@ -96,7 +96,7 @@ loginBtn.addEventListener('click', e => {
 })
 
 signupBtn.addEventListener('click', e => {
-    e.preventDefault();
+    // e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList
     if(nameFieldClassList.contains('display-none')) {
         nameFieldClassList.remove('display-none');
@@ -108,9 +108,19 @@ signupBtn.addEventListener('click', e => {
         const name = nameField.value;
         const email = emailField.value;
         const password = passwordField.value;
-        console.log('SIGNUP')
-        console.log("Name: " + name)
-        console.log("Email: " + email)
-        console.log("Password: " + password)
+        let passwordIssueTracker = new IssueTracker();
+        let emailIssueTracker = new IssueTracker();
+        checkEmailRequirements(email, emailIssueTracker);
+        checkPasswordRequirements(password, passwordIssueTracker);
+        const emailIssues = emailIssueTracker.retrieve();
+        const passwordIssues = passwordIssueTracker.retrieve();
+        emailField.setCustomValidity(emailIssues)
+        passwordField.setCustomValidity(passwordIssues)
+        if (passwordIssues.length === 0 && emailIssues.length == 0) {
+            console.log('SIGNUP')
+            console.log("Name: " + name)
+            console.log("Email: " + email)
+            console.log("Password: " + password)
+        }
     }
 })
