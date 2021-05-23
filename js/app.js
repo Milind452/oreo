@@ -18,6 +18,7 @@ loginBtn.addEventListener('click', e => {
 })
 
 signupBtn.addEventListener('click', e => {
+    e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList
     if(nameFieldClassList.contains('display-none')) {
         nameFieldClassList.remove('display-none')
