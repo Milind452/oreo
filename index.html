@@ -89,6 +89,30 @@
                 </form>
             </div>
         </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-analytics.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyDUyQUtRQfQfA8zDLdcrxKYMrTrCLT9GDE",
+                authDomain: "oreo-e4655.firebaseapp.com",
+                projectId: "oreo-e4655",
+                storageBucket: "oreo-e4655.appspot.com",
+                messagingSenderId: "782834877947",
+                appId: "1:782834877947:web:5e762c87b87fdffc0d775e",
+                measurementId: "G-86L2CTKPJB",
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+        </script>
         <script src="js/app.js"></script>
     </body>
 </html>
