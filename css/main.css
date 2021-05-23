@@ -146,3 +146,15 @@ input {
 .signup-btn:hover {
     background-color: var(--main-blue1);
 }
+
+@media screen and (max-width: 800px) {
+    .main {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .left {
+        align-self: center;
+        margin: 0;
+    }
+}
