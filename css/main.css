@@ -88,3 +88,61 @@ h2 span {
     align-self: center;
     padding: 100px;
 }
+
+.box {
+    border: none;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.box__fields {
+    padding: 20px;
+}
+
+.box-field {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+input {
+    font-size: 17px;
+    padding: 14px 16px;
+    width: 300px;
+    cursor: text;
+    border: 1px solid var(--main-gray);
+    border-radius: 6px;
+    outline: none;
+    padding-left: 45px;
+}
+
+.box-btn {
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+}
+
+.login-btn {
+    width: 300px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--main-light-blue);
+}
+
+.login-btn:hover {
+    background-color: #029be4;
+}
+
+.signup-btn {
+    width: 250px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--main-blue);
+}
+
+.signup-btn:hover {
+    background-color: var(--main-blue1);
+}
