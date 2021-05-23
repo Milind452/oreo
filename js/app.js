@@ -43,7 +43,13 @@ loginBtn.addEventListener('click', e => {
         const email = emailField.value;
         const password = passwordField.value;
         let passwordIssueTracker = new IssueTracker();
-        (function checkRequirements() {
+        let emailIssueTracker = new IssueTracker();
+        (function checkEmailRequirements() {
+            if(!email.match(/[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+/g)) {
+                emailIssueTracker.add("enter valid email id")
+            }
+        })();
+        (function checkPasswordRequirements() {
             if (password.length < 8) {
               passwordIssueTracker.add("fewer than 8 characters");
             } else if (password.length > 100) {
@@ -73,9 +79,11 @@ loginBtn.addEventListener('click', e => {
               });
             }
         })();
-        const passwordIssues = passwordIssueTracker.retrieve()
+        const emailIssues = emailIssueTracker.retrieve();
+        const passwordIssues = passwordIssueTracker.retrieve();
+        emailField.setCustomValidity(emailIssues)
         passwordField.setCustomValidity(passwordIssues)
-        if (passwordIssues.length === 0) {
+        if (passwordIssues.length === 0 && emailIssues.length == 0) {
             console.log("LOGIN")
             console.log("Email: " + email)
             console.log("Password: " + password)
