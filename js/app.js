@@ -30,6 +30,12 @@ IssueTracker.prototype = {
     }
 };
 
+function checkNameRequirements(name, nameIssueTracker) {
+    if(!name.match(/^[a-zA-Z]+$/g)) {
+        nameIssueTracker.add("enter valid name")
+    }
+}
+
 function checkEmailRequirements(email, emailIssueTracker) {
     if(!email.match(/[a-zA-Z0-9]+@[a-zA-Z]+\.[a-zA-Z]+/g)) {
         emailIssueTracker.add("enter valid email id")
@@ -112,13 +118,17 @@ signupBtn.addEventListener('click', e => {
         const password = passwordField.value;
         let passwordIssueTracker = new IssueTracker();
         let emailIssueTracker = new IssueTracker();
+        let nameIssueTracker = new IssueTracker();
+        checkNameRequirements(name, nameIssueTracker);
         checkEmailRequirements(email, emailIssueTracker);
         checkPasswordRequirements(password, passwordIssueTracker);
+        const nameIssues = nameIssueTracker.retrieve();
         const emailIssues = emailIssueTracker.retrieve();
         const passwordIssues = passwordIssueTracker.retrieve();
-        emailField.setCustomValidity(emailIssues)
-        passwordField.setCustomValidity(passwordIssues)
-        if (passwordIssues.length === 0 && emailIssues.length == 0) {
+        nameField.setCustomValidity(nameIssues);
+        emailField.setCustomValidity(emailIssues);
+        passwordField.setCustomValidity(passwordIssues);
+        if (passwordIssues.length === 0 && emailIssues.length === 0 && nameIssues.length === 0) {
             console.log('SIGNUP')
             console.log("Name: " + name)
             console.log("Email: " + email)
