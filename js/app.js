@@ -18,7 +18,9 @@ loginBtn.addEventListener('click', e => {
     }
     const email = emailField.value;
     const password = passwordField.value;
-    console.log("login")
+    console.log("LOGIN")
+    console.log("Email: " + email)
+    console.log("Password: " + password)
 })
 
 signupBtn.addEventListener('click', e => {
@@ -34,5 +36,8 @@ signupBtn.addEventListener('click', e => {
     const name = nameField.value;
     const email = emailField.value;
     const password = passwordField.value;
-    console.log('Create account')
+    console.log('SIGNUP')
+    console.log("Name: " + name)
+    console.log("Email: " + email)
+    console.log("Password: " + password)
 })
