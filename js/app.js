@@ -31,8 +31,8 @@ IssueTracker.prototype = {
 };
 
 loginBtn.addEventListener('click', e => {
-    e.preventDefault();
-    const nameFieldClassList = nameFieldDiv.classList
+    // e.preventDefault();
+    const nameFieldClassList = nameFieldDiv.classList;
     if(!nameFieldClassList.contains('display-none')) {
         nameFieldClassList.add('display-none')
         signupBtn.parentElement.remove();
@@ -42,9 +42,44 @@ loginBtn.addEventListener('click', e => {
     } else {
         const email = emailField.value;
         const password = passwordField.value;
-        console.log("LOGIN")
-        console.log("Email: " + email)
-        console.log("Password: " + password)
+        let passwordIssueTracker = new IssueTracker();
+        (function checkRequirements() {
+            if (password.length < 8) {
+              passwordIssueTracker.add("fewer than 8 characters");
+            } else if (password.length > 100) {
+              passwordIssueTracker.add("greater than 100 characters");
+            }
+        
+            if (!password.match(/[\!\@\#\$\%\^\&\*]/g)) {
+              passwordIssueTracker.add("missing a symbol (!, @, #, $, %, ^, &, *)");
+            }
+        
+            if (!password.match(/\d/g)) {
+              passwordIssueTracker.add("missing a number");
+            }
+        
+            if (!password.match(/[a-z]/g)) {
+              passwordIssueTracker.add("missing a lowercase letter");
+            }
+        
+            if (!password.match(/[A-Z]/g)) {
+              passwordIssueTracker.add("missing an uppercase letter");
+            }
+        
+            const illegalCharacterGroup = password.match(/[^A-z0-9\!\@\#\$\%\^\&\*]/g)
+            if (illegalCharacterGroup) {
+              illegalCharacterGroup.forEach(function (illegalChar) {
+                passwordIssueTracker.add("includes illegal character: " + illegalChar);
+              });
+            }
+        })();
+        const passwordIssues = passwordIssueTracker.retrieve()
+        passwordField.setCustomValidity(passwordIssues)
+        if (passwordIssues.length === 0) {
+            console.log("LOGIN")
+            console.log("Email: " + email)
+            console.log("Password: " + password)
+        }
     }
 })
 
