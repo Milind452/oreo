@@ -1,0 +1,17 @@
+.title-area {
+    background-color: var(--main-blue3);
+    width: 100%;
+    max-height: max-content;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.title-area__item {
+    padding: 10px 30px;
+}
