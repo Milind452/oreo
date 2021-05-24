@@ -59,6 +59,7 @@ p {
 a {
     text-decoration: none;
     text-align: center;
+    display: block;
 }
 
 h2 span {
@@ -104,6 +105,30 @@ h2 span {
     margin-bottom: 20px;
     display: flex;
     justify-content: center;
+}
+
+.box-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-bottom: 1px solid gray;
+}
+
+.login,
+.signup {
+    flex: 50%;
+    display: block;
+    text-align: center;
+    padding: 5px;
+}
+
+.nav-link {
+    color: var(--main-blue);
+    font-weight: 600;
+}
+
+.login {
+    border-right: 1px solid gray;
 }
 
 .display-none {
