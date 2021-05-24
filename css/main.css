@@ -119,12 +119,13 @@ h2 span {
     flex: 50%;
     display: block;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 }
 
 .nav-link {
     color: var(--main-blue);
     font-weight: 600;
+    font-size: 1.5rem;
 }
 
 .login {
