@@ -41,7 +41,7 @@
 
 .cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 50px;
     margin-bottom: 3rem;
     padding: 5rem 3rem;
@@ -51,6 +51,7 @@
     background-color: var(--main-blue2);
     max-width: 200px;
     padding: 30px;
+    text-align: center;
 }
 
 .add-tile-btn {
