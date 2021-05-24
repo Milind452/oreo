@@ -5,6 +5,7 @@ const emailField = document.querySelector("#email");
 const passwordField = document.querySelector("#password");
 const loginBtn = document.querySelector("#login");
 const signupBtn = document.querySelector("#signup");
+const submitBtn = document.querySelector("#submit");
 
 function IssueTracker() {
     this.issues = [];
@@ -78,19 +79,29 @@ function checkPasswordRequirements(password, passwordIssueTracker) {
     }
 }
 
+signupBtn.addEventListener("click", (e) => {
+    const nameFieldClassList = nameFieldDiv.classList;
+    if (nameFieldClassList.contains("display-none")) {
+        nameFieldClassList.remove("display-none");
+        submitBtn.textContent = "Create Account";
+        nameField.required = true;
+    }
+});
+
 loginBtn.addEventListener("click", (e) => {
-    // e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList;
     if (!nameFieldClassList.contains("display-none")) {
         nameFieldClassList.add("display-none");
-        signupBtn.parentElement.remove();
-        document
-            .querySelector(".box__fields")
-            .insertAdjacentElement("beforeend", signupBtn.parentElement);
-        loginBtn.style.width = "300px";
-        signupBtn.style.width = "250px";
+        submitBtn.textContent = "Login";
         nameField.required = false;
-    } else {
+    }
+});
+
+submitBtn.addEventListener("click", (e) => {
+    // e.preventDefault();
+    const status = submitBtn.innerText;
+    if (status === "Login") {
+        console.log("Status: Login");
         const email = emailField.value;
         const password = passwordField.value;
         let passwordIssueTracker = new IssueTracker();
@@ -119,22 +130,8 @@ loginBtn.addEventListener("click", (e) => {
             console.log("Email: " + email);
             console.log("Password: " + password);
         }
-    }
-});
-
-signupBtn.addEventListener("click", (e) => {
-    // e.preventDefault();
-    const nameFieldClassList = nameFieldDiv.classList;
-    if (nameFieldClassList.contains("display-none")) {
-        nameFieldClassList.remove("display-none");
-        loginBtn.parentElement.remove();
-        document
-            .querySelector(".box__fields")
-            .insertAdjacentElement("beforeend", loginBtn.parentElement);
-        loginBtn.style.width = "250px";
-        signupBtn.style.width = "300px";
-        nameField.required = true;
     } else {
+        console.log("Status: Signup");
         const name = nameField.value;
         const email = emailField.value;
         const password = passwordField.value;
