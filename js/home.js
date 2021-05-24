@@ -1,4 +1,17 @@
 const logoutBtn = document.querySelector("#logout");
+const addTileBtn = document.querySelector("#add-tile");
+const cardsGrid = document.querySelector(".cards-grid");
+
+addTileBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    function createProjectTile() {
+        const projectTile = document.createElement("div");
+        projectTile.classList.add("cards-grid__tile");
+        projectTile.textContent = "<Project Name>";
+        return projectTile;
+    }
+    cardsGrid.appendChild(createProjectTile());
+});
 
 logoutBtn.addEventListener("click", (e) => {
     e.preventDefault();
