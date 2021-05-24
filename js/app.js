@@ -5,6 +5,7 @@ const emailField = document.querySelector("#email");
 const passwordField = document.querySelector("#password");
 const loginBtn = document.querySelector("#login");
 const signupBtn = document.querySelector("#signup");
+const submitBtn = document.querySelector("#submit");
 
 function IssueTracker() {
     this.issues = [];
@@ -78,104 +79,122 @@ function checkPasswordRequirements(password, passwordIssueTracker) {
     }
 }
 
-loginBtn.addEventListener("click", (e) => {
-    // e.preventDefault();
-    const nameFieldClassList = nameFieldDiv.classList;
-    if (!nameFieldClassList.contains("display-none")) {
-        nameFieldClassList.add("display-none");
-        signupBtn.parentElement.remove();
-        document
-            .querySelector(".box__fields")
-            .insertAdjacentElement("beforeend", signupBtn.parentElement);
-        loginBtn.style.width = "300px";
-        signupBtn.style.width = "250px";
-        nameField.required = false;
-    } else {
-        const email = emailField.value;
-        const password = passwordField.value;
-        let passwordIssueTracker = new IssueTracker();
-        let emailIssueTracker = new IssueTracker();
-        checkEmailRequirements(email, emailIssueTracker);
-        checkPasswordRequirements(password, passwordIssueTracker);
-        const emailIssues = emailIssueTracker.retrieve();
-        const passwordIssues = passwordIssueTracker.retrieve();
-        emailField.setCustomValidity(emailIssues);
-        passwordField.setCustomValidity(passwordIssues);
-        if (passwordIssues.length === 0 && emailIssues.length == 0) {
-            firebase
-                .auth()
-                .signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed in
-                    var user = userCredential.user;
-                    // ...
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
-                });
-            console.log("LOGIN");
-            console.log("Email: " + email);
-            console.log("Password: " + password);
-        }
-    }
-});
-
 signupBtn.addEventListener("click", (e) => {
-    // e.preventDefault();
     const nameFieldClassList = nameFieldDiv.classList;
     if (nameFieldClassList.contains("display-none")) {
         nameFieldClassList.remove("display-none");
-        loginBtn.parentElement.remove();
-        document
-            .querySelector(".box__fields")
-            .insertAdjacentElement("beforeend", loginBtn.parentElement);
-        loginBtn.style.width = "250px";
-        signupBtn.style.width = "300px";
+        submitBtn.textContent = "Create Account";
         nameField.required = true;
-    } else {
-        const name = nameField.value;
-        const email = emailField.value;
-        const password = passwordField.value;
-        let passwordIssueTracker = new IssueTracker();
-        let emailIssueTracker = new IssueTracker();
-        let nameIssueTracker = new IssueTracker();
-        checkNameRequirements(name, nameIssueTracker);
-        checkEmailRequirements(email, emailIssueTracker);
-        checkPasswordRequirements(password, passwordIssueTracker);
-        const nameIssues = nameIssueTracker.retrieve();
-        const emailIssues = emailIssueTracker.retrieve();
-        const passwordIssues = passwordIssueTracker.retrieve();
-        nameField.setCustomValidity(nameIssues);
-        emailField.setCustomValidity(emailIssues);
-        passwordField.setCustomValidity(passwordIssues);
-        if (
-            passwordIssues.length === 0 &&
-            emailIssues.length === 0 &&
-            nameIssues.length === 0
-        ) {
-            firebase
-                .auth()
-                .createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    // Signed in
-                    var user = userCredential.user;
-                    // ...
-                })
-                .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
-                    // ..
-                });
-            console.log("SIGNUP");
-            console.log("Name: " + name);
-            console.log("Email: " + email);
-            console.log("Password: " + password);
-        }
     }
 });
+
+loginBtn.addEventListener("click", (e) => {
+    const nameFieldClassList = nameFieldDiv.classList;
+    if (!nameFieldClassList.contains("display-none")) {
+        nameFieldClassList.add("display-none");
+        submitBtn.textContent = "Login";
+        nameField.required = false;
+    }
+});
+
+// loginBtn.addEventListener("click", (e) => {
+//     // e.preventDefault();
+//     const nameFieldClassList = nameFieldDiv.classList;
+//     if (!nameFieldClassList.contains("display-none")) {
+//         nameFieldClassList.add("display-none");
+//         signupBtn.parentElement.remove();
+//         document
+//             .querySelector(".box__fields")
+//             .insertAdjacentElement("beforeend", signupBtn.parentElement);
+//         loginBtn.style.width = "300px";
+//         signupBtn.style.width = "250px";
+//         nameField.required = false;
+//     } else {
+//         const email = emailField.value;
+//         const password = passwordField.value;
+//         let passwordIssueTracker = new IssueTracker();
+//         let emailIssueTracker = new IssueTracker();
+//         checkEmailRequirements(email, emailIssueTracker);
+//         checkPasswordRequirements(password, passwordIssueTracker);
+//         const emailIssues = emailIssueTracker.retrieve();
+//         const passwordIssues = passwordIssueTracker.retrieve();
+//         emailField.setCustomValidity(emailIssues);
+//         passwordField.setCustomValidity(passwordIssues);
+//         if (passwordIssues.length === 0 && emailIssues.length == 0) {
+//             firebase
+//                 .auth()
+//                 .signInWithEmailAndPassword(email, password)
+//                 .then((userCredential) => {
+//                     // Signed in
+//                     var user = userCredential.user;
+//                     // ...
+//                 })
+//                 .catch((error) => {
+//                     var errorCode = error.code;
+//                     var errorMessage = error.message;
+//                     console.log(errorCode, errorMessage);
+//                 });
+//             console.log("LOGIN");
+//             console.log("Email: " + email);
+//             console.log("Password: " + password);
+//         }
+//     }
+// });
+
+// signupBtn.addEventListener("click", (e) => {
+//     // e.preventDefault();
+//     const nameFieldClassList = nameFieldDiv.classList;
+//     if (nameFieldClassList.contains("display-none")) {
+//         nameFieldClassList.remove("display-none");
+//         loginBtn.parentElement.remove();
+//         document
+//             .querySelector(".box__fields")
+//             .insertAdjacentElement("beforeend", loginBtn.parentElement);
+//         loginBtn.style.width = "250px";
+//         signupBtn.style.width = "300px";
+//         nameField.required = true;
+//     } else {
+//         const name = nameField.value;
+//         const email = emailField.value;
+//         const password = passwordField.value;
+//         let passwordIssueTracker = new IssueTracker();
+//         let emailIssueTracker = new IssueTracker();
+//         let nameIssueTracker = new IssueTracker();
+//         checkNameRequirements(name, nameIssueTracker);
+//         checkEmailRequirements(email, emailIssueTracker);
+//         checkPasswordRequirements(password, passwordIssueTracker);
+//         const nameIssues = nameIssueTracker.retrieve();
+//         const emailIssues = emailIssueTracker.retrieve();
+//         const passwordIssues = passwordIssueTracker.retrieve();
+//         nameField.setCustomValidity(nameIssues);
+//         emailField.setCustomValidity(emailIssues);
+//         passwordField.setCustomValidity(passwordIssues);
+//         if (
+//             passwordIssues.length === 0 &&
+//             emailIssues.length === 0 &&
+//             nameIssues.length === 0
+//         ) {
+//             firebase
+//                 .auth()
+//                 .createUserWithEmailAndPassword(email, password)
+//                 .then((userCredential) => {
+//                     // Signed in
+//                     var user = userCredential.user;
+//                     // ...
+//                 })
+//                 .catch((error) => {
+//                     var errorCode = error.code;
+//                     var errorMessage = error.message;
+//                     console.log(errorCode, errorMessage);
+//                     // ..
+//                 });
+//             console.log("SIGNUP");
+//             console.log("Name: " + name);
+//             console.log("Email: " + email);
+//             console.log("Password: " + password);
+//         }
+//     }
+// });
 
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
