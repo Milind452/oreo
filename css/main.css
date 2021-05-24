@@ -144,26 +144,15 @@ input {
     padding: 0 16px;
 }
 
-.login-btn {
+.submit-btn {
     width: 300px;
     cursor: pointer;
     color: #fff;
     background-color: var(--main-light-blue);
 }
 
-.login-btn:hover {
+.submit-btn:hover {
     background-color: #029be4;
-}
-
-.signup-btn {
-    width: 250px;
-    cursor: pointer;
-    color: #fff;
-    background-color: var(--main-blue);
-}
-
-.signup-btn:hover {
-    background-color: var(--main-blue1);
 }
 
 @media screen and (max-width: 800px) {
