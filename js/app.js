@@ -98,7 +98,7 @@ loginBtn.addEventListener("click", (e) => {
 });
 
 submitBtn.addEventListener("click", (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     const status = submitBtn.innerText;
     if (status === "Login") {
         console.log("Status: Login");
