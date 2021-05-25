@@ -129,3 +129,13 @@ textarea {
 .icon {
     color: var(--main-blue3);
 }
+
+.tile-links {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tile-links__action {
+    color: var(--main-light-blue);
+    cursor: pointer;
+}
