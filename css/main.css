@@ -151,7 +151,8 @@ h2 span {
     transform: translateY(-50%);
 }
 
-input {
+input,
+textarea {
     font-size: 17px;
     padding: 14px 16px;
     width: 300px;
