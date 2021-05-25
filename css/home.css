@@ -4,8 +4,30 @@ body {
 }
 
 .app,
-.main-content {
+.main-content,
+.nav-wrapper {
     height: 100%;
+}
+
+.app {
+    display: flex;
+    background-color: var(--main-blue);
+}
+
+.nav-wrapper {
+    /* position: fixed; */
+    width: 100%;
+    max-width: 300px;
+    background-color: var(--main-blue2);
+}
+
+.main-content {
+    /* margin-left: 300px; */
+    width: 100%;
+}
+
+.title-wrapper {
+    /* margin-left: 300px; */
 }
 
 .title-area {
@@ -18,7 +40,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
 }
@@ -44,9 +66,10 @@ body {
 }
 
 .content-area {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     width: 100%;
-    height: 100%;
+    height: fit-content;
+    max-height: 100%;
     overflow: auto;
     background-color: var(--main-blue);
 }
