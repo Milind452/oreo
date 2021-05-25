@@ -77,3 +77,23 @@ body {
     color: #fff;
     background-color: var(--main-light-blue);
 }
+
+.modal {
+    width: 350px;
+    font-size: 1.2rem;
+}
+
+.box {
+    background-color: var(--main-blue1);
+    opacity: 0.8;
+}
+
+.box-field {
+    flex-direction: column;
+}
+
+input,
+textarea {
+    padding: 0 10px;
+    resize: none;
+}
