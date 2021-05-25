@@ -79,6 +79,7 @@ body {
 }
 
 .modal {
+    display: none;
     width: 350px;
     font-size: 1.2rem;
     position: relative;
