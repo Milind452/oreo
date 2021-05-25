@@ -158,6 +158,12 @@ submitBtn.addEventListener("click", (e) => {
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
+                    if (user !== null) {
+                        const db = firebase.database();
+                        db.ref("/").set({
+                            uid: user.uid,
+                        });
+                    }
                     // ...
                 })
                 .catch((error) => {
