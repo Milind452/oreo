@@ -14,17 +14,17 @@ addTileBtn.addEventListener("click", (e) => {
         e.preventDefault();
         title = titleField.value;
         description = descriptionField.value;
-        function createProjectTile() {
-            const projectTile = document.createElement("div");
-            projectTile.classList.add("cards-grid__tile");
-            projectTile.textContent = title;
-            console.log(title, description);
-            return projectTile;
+        if (title !== "") {
+            function createProjectTile() {
+                const projectTile = document.createElement("div");
+                projectTile.classList.add("cards-grid__tile");
+                projectTile.textContent = title;
+                return projectTile;
+            }
+            cardsGrid.appendChild(createProjectTile());
+            modal.style.display = "none";
         }
-        cardsGrid.appendChild(createProjectTile());
-        modal.style.display = "none";
         create.removeEventListener("click", createNewProject);
-        close.removeEventListener("click", closeModal);
     }
     function closeModal(e) {
         e.preventDefault();
