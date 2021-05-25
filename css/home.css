@@ -12,22 +12,36 @@ body {
 .app {
     display: flex;
     background-color: var(--main-blue);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
 }
 
 .nav-wrapper {
-    /* position: fixed; */
+    height: 100%;
     width: 100%;
     max-width: 300px;
     background-color: var(--main-blue2);
+    position: absolute;
+    z-index: 10;
+    transform: translateX(0);
+    transition: 0.2s all ease-in-out;
 }
 
 .main-content {
-    /* margin-left: 300px; */
     width: 100%;
+    height: 100%;
+    position: relative;
+    transition: 0.2s padding-top ease-in-out;
 }
 
 .title-wrapper {
-    /* margin-left: 300px; */
+    margin-left: 300px;
+    z-index: 9;
+    box-shadow: 0 0 40px rgb(0 0 0 / 20%);
+    transition: 0.2s margin-left ease-in-out, 0.2s margin-right ease-in-out;
 }
 
 .title-area {
@@ -40,7 +54,6 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
     top: 0;
     left: 0;
 }
@@ -66,12 +79,12 @@ body {
 }
 
 .content-area {
-    /* margin-top: 60px; */
-    width: 100%;
-    height: fit-content;
+    margin-left: 300px;
     max-height: 100%;
     overflow: auto;
     background-color: var(--main-blue);
+    transition: 0.2s padding-top ease-in-out, 0.2s margin-left ease-in-out,
+        0.2s margin-right ease-in-out;
 }
 
 .cards-grid {
