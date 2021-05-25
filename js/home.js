@@ -3,37 +3,39 @@ const addTileBtn = document.querySelector("#add-tile");
 const cardsGrid = document.querySelector(".cards-grid");
 const modal = document.querySelector(".modal");
 
+const titleField = document.querySelector("#title");
+const descriptionField = document.querySelector("#description");
+const create = document.querySelector("#create");
+const close = document.querySelector("#close");
+
 addTileBtn.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "block";
-    const titleField = document.querySelector("#title");
-    const descriptionField = document.querySelector("#description");
-    const create = document.querySelector("#create");
-    const close = document.querySelector("#close");
-    function createNewProject(e) {
-        e.preventDefault();
-        title = titleField.value;
-        description = descriptionField.value;
-        if (title !== "") {
-            function createProjectTile() {
-                const projectTile = document.createElement("div");
-                projectTile.classList.add("cards-grid__tile");
-                projectTile.textContent = title;
-                return projectTile;
-            }
-            cardsGrid.appendChild(createProjectTile());
-            modal.style.display = "none";
+    titleField.value = "";
+    descriptionField.value = "";
+});
+
+create.addEventListener("click", (e) => {
+    // e.preventDefault();
+    title = titleField.value;
+    description = descriptionField.value;
+    console.log(title !== "");
+    if (title !== "") {
+        function createProjectTile() {
+            const projectTile = document.createElement("div");
+            projectTile.classList.add("cards-grid__tile");
+            projectTile.textContent = title;
+            console.log(title, description);
+            return projectTile;
         }
-        create.removeEventListener("click", createNewProject);
-    }
-    function closeModal(e) {
-        e.preventDefault();
+        cardsGrid.appendChild(createProjectTile());
         modal.style.display = "none";
-        create.removeEventListener("click", createNewProject);
-        close.removeEventListener("click", closeModal);
     }
-    create.addEventListener("click", createNewProject);
-    close.addEventListener("click", closeModal);
+});
+
+close.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "none";
 });
 
 // logoutBtn.addEventListener("click", (e) => {
