@@ -108,3 +108,18 @@ textarea {
     color: #fff;
     background-color: var(--main-light-blue);
 }
+
+.close {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 290px;
+}
+
+#modal-form {
+    position: absolute;
+}
+
+.icon {
+    color: var(--main-blue3);
+}
