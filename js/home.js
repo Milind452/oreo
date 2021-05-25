@@ -29,6 +29,10 @@ create.addEventListener("click", (e) => {
         }
         cardsGrid.appendChild(createProjectTile());
         modal.style.display = "none";
+        const user = firebase.auth().currentUser;
+        if (user !== null) {
+            const db = firebase.database();
+        }
     }
 });
 
