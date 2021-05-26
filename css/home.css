@@ -205,3 +205,8 @@ textarea {
 .hidden-content {
     margin-left: 0;
 }
+
+.fa-edit,
+.fa-trash {
+    padding: 5px;
+}
