@@ -59,6 +59,15 @@ close.addEventListener("click", (e) => {
     modal.style.display = "none";
 });
 
+cardsGrid.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target && e.target.parentElement.id.match(/^delete[0-9]+$/)) {
+        const projectTile = e.target.parentElement.parentElement.parentElement;
+        const title = projectTile.innerText;
+        projectTile.remove();
+    }
+});
+
 logoutBtn.addEventListener("click", (e) => {
     e.preventDefault();
     firebase
