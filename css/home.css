@@ -178,3 +178,7 @@ textarea {
     color: var(--main-light-blue);
     cursor: pointer;
 }
+
+.hamburger-btn {
+    cursor: pointer;
+}
