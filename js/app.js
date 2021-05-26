@@ -7,6 +7,7 @@ const loginBtn = document.querySelector("#login");
 const signupBtn = document.querySelector("#signup");
 const submitBtn = document.querySelector("#submit");
 
+let isCreatingUser = true;
 function IssueTracker() {
     this.issues = [];
 }
@@ -152,6 +153,7 @@ submitBtn.addEventListener("click", (e) => {
             emailIssues.length === 0 &&
             nameIssues.length === 0
         ) {
+            isCreatingUser = true;
             firebase
                 .auth()
                 .createUserWithEmailAndPassword(email, password)
@@ -160,9 +162,18 @@ submitBtn.addEventListener("click", (e) => {
                     var user = userCredential.user;
                     if (user !== null) {
                         const db = firebase.database();
-                        db.ref("/").set({
-                            uid: user.uid,
-                        });
+                        db.ref("users/" + user.uid)
+                            .set({
+                                email: email,
+                                name: name,
+                            })
+                            .then(() => {
+                                isCreatingUser = false;
+                            })
+                            .catch((e) => {
+                                isCreatingUser = false;
+                                throw e;
+                            });
                     }
                     // ...
                 })
@@ -170,6 +181,7 @@ submitBtn.addEventListener("click", (e) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage);
+                    isCreatingUser = false;
                     // ..
                 });
             console.log("SIGNUP");
@@ -181,7 +193,7 @@ submitBtn.addEventListener("click", (e) => {
 });
 
 firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
+    if (user && !isCreatingUser) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
