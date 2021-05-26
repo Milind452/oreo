@@ -7,7 +7,7 @@ const loginBtn = document.querySelector("#login");
 const signupBtn = document.querySelector("#signup");
 const submitBtn = document.querySelector("#submit");
 
-let isCreatingUser = true;
+let isCreatingUser = false;
 function IssueTracker() {
     this.issues = [];
 }
@@ -169,6 +169,7 @@ submitBtn.addEventListener("click", (e) => {
                             })
                             .then(() => {
                                 isCreatingUser = false;
+                                window.location.href = "../html/home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
