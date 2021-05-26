@@ -8,6 +8,18 @@ const descriptionField = document.querySelector("#description");
 const create = document.querySelector("#create");
 const close = document.querySelector("#close");
 
+const hamburger = document.querySelector("#hamburger");
+const navWrapper = document.querySelector(".nav-wrapper");
+const titleWrapper = document.querySelector(".title-wrapper");
+const contentArea = document.querySelector(".content-area");
+
+hamburger.addEventListener("click", (e) => {
+    e.preventDefault();
+    navWrapper.classList.toggle("hidden-nav");
+    titleWrapper.classList.toggle("hidden-content");
+    contentArea.classList.toggle("hidden-content");
+});
+
 addTileBtn.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "block";
