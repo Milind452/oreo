@@ -84,6 +84,14 @@ firebase.auth().onAuthStateChanged((user) => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(user);
+        let name;
+        firebase
+            .database()
+            .ref("users/" + uid + "/name")
+            .once("value", (snap) => {
+                // console.log(snap.val());
+                name = snap.val();
+            });
         // ...
     } else {
         // User is signed out
