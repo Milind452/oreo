@@ -13,6 +13,23 @@ const navWrapper = document.querySelector(".nav-wrapper");
 const titleWrapper = document.querySelector(".title-wrapper");
 const contentArea = document.querySelector(".content-area");
 
+function createProjectTile(title) {
+    const projectTile = document.createElement("div");
+    projectTile.classList.add("cards-grid__tile");
+
+    projectTile.innerHTML = `${title}
+                            <div class="tile-links">
+                            <a id="edit" class="tile-links__action">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a id="delete" class="tile-links__action">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            </div>`;
+    // console.log(title, description);
+    return projectTile;
+}
+
 hamburger.addEventListener("click", (e) => {
     e.preventDefault();
     navWrapper.classList.toggle("hidden-nav");
@@ -32,23 +49,7 @@ create.addEventListener("click", (e) => {
     title = titleField.value;
     description = descriptionField.value;
     if (title !== "") {
-        function createProjectTile() {
-            const projectTile = document.createElement("div");
-            projectTile.classList.add("cards-grid__tile");
-
-            projectTile.innerHTML = `${title}
-                                    <div class="tile-links">
-                                    <a id="edit" class="tile-links__action">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a id="delete" class="tile-links__action">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                    </div>`;
-            console.log(title, description);
-            return projectTile;
-        }
-        cardsGrid.appendChild(createProjectTile());
+        cardsGrid.appendChild(createProjectTile(title));
         modal.style.display = "none";
         db_createProject(title, description);
     }
