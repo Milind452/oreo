@@ -64,8 +64,14 @@ cardsGrid.addEventListener("click", (e) => {
     if (e.target && e.target.parentElement.id.match(/^delete[0-9]+$/)) {
         const projectTile = e.target.parentElement.parentElement.parentElement;
         const title = projectTile.innerText;
-        projectTile.remove();
-        db_deleteProject(title);
+        if (
+            confirm(
+                `Are you sure you want to delete project ${title}. Once deleted, it cannot be recovered.`
+            )
+        ) {
+            projectTile.remove();
+            db_deleteProject(title);
+        }
     }
 });
 
