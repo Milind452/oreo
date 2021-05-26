@@ -65,6 +65,7 @@ cardsGrid.addEventListener("click", (e) => {
         const projectTile = e.target.parentElement.parentElement.parentElement;
         const title = projectTile.innerText;
         projectTile.remove();
+        db_deleteProject(title);
     }
 });
 
@@ -159,6 +160,18 @@ function db_createProject(title, description) {
             .update({
                 description: description,
             })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_deleteProject(title) {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        const db = firebase.database();
+        db.ref("users/" + user.uid + "/projects/" + title)
+            .remove()
             .catch((e) => {
                 throw e;
             });
