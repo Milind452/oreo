@@ -16,13 +16,13 @@ const contentArea = document.querySelector(".content-area");
 function createProjectTile(title) {
     const projectTile = document.createElement("div");
     projectTile.classList.add("cards-grid__tile");
-
+    const count = cardsGrid.childElementCount;
     projectTile.innerHTML = `${title}
                             <div class="tile-links">
-                            <a id="edit" class="tile-links__action">
+                            <a id="edit${count}" class="tile-links__action">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a id="delete" class="tile-links__action">
+                            <a id="delete${count}" class="tile-links__action">
                                 <i class="fa fa-trash"></i>
                             </a>
                             </div>`;
