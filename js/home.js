@@ -26,8 +26,7 @@ function createProjectTile(title) {
                                 <i class="fa fa-trash"></i>
                             </a>
                             </div>`;
-    // console.log(title, description);
-    return projectTile;
+    cardsGrid.appendChild(projectTile);
 }
 
 hamburger.addEventListener("click", (e) => {
@@ -49,7 +48,7 @@ create.addEventListener("click", (e) => {
     title = titleField.value;
     description = descriptionField.value;
     if (title !== "") {
-        cardsGrid.appendChild(createProjectTile(title));
+        createProjectTile(title);
         modal.style.display = "none";
         db_createProject(title, description);
     }
