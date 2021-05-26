@@ -50,10 +50,7 @@ create.addEventListener("click", (e) => {
         }
         cardsGrid.appendChild(createProjectTile());
         modal.style.display = "none";
-        const user = firebase.auth().currentUser;
-        if (user !== null) {
-            const db = firebase.database();
-        }
+        db_createProject(title, description);
     }
 });
 
@@ -99,3 +96,17 @@ firebase.auth().onAuthStateChanged((user) => {
         console.log("not logged in");
     }
 });
+
+function db_createProject(title, description) {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        const db = firebase.database();
+        db.ref("users/" + user.uid + "/projects/" + title)
+            .update({
+                description: description,
+            })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
