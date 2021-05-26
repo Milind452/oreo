@@ -82,14 +82,7 @@ firebase.auth().onAuthStateChanged((user) => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(user);
-        let name;
-        firebase
-            .database()
-            .ref("users/" + uid + "/name")
-            .once("value", (snap) => {
-                // console.log(snap.val());
-                name = snap.val();
-            });
+        db_getUserName();
         // ...
     } else {
         // User is signed out
@@ -97,6 +90,27 @@ firebase.auth().onAuthStateChanged((user) => {
         console.log("not logged in");
     }
 });
+
+function db_getUserName() {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        let name;
+        firebase
+            .database()
+            .ref("users/" + user.uid + "/name")
+            .once("value", (snap) => {
+                // console.log(snap.val());
+                name = snap.val();
+            })
+            .then(() => {
+                console.log(name);
+                // TODO: Display user name on the home page "Hi <username>"
+            })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
 
 function db_createProject(title, description) {
     const user = firebase.auth().currentUser;
