@@ -72,6 +72,7 @@ body {
     cursor: pointer;
     color: #fff;
     background-color: var(--main-light-blue);
+    transition: 0.2s ease-in-out;
 }
 
 .logout-btn:hover {
@@ -115,6 +116,11 @@ body {
     cursor: pointer;
     color: #fff;
     background-color: var(--main-light-blue);
+    transition: 0.2s ease-in-out;
+}
+
+.add-tile-btn:hover {
+    background-color: #029be4;
 }
 
 .modal {
