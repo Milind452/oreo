@@ -59,7 +59,7 @@ body {
 }
 
 .title-area__item {
-    padding: 10px 30px;
+    padding: 0 30px;
 }
 
 .logout-btn {
@@ -182,8 +182,14 @@ textarea {
 .hamburger-btn {
     cursor: pointer;
     font-size: 1.5rem;
-    padding: 0 8px;
+    padding: 8px 15px;
     color: var(--main-light-blue);
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+}
+
+.hamburger-btn:hover {
+    background-color: rgba(256, 256, 256, 0.15);
 }
 
 .hidden-nav {
