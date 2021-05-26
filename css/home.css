@@ -181,6 +181,9 @@ textarea {
 
 .hamburger-btn {
     cursor: pointer;
+    font-size: 1.5rem;
+    padding: 0 8px;
+    color: var(--main-light-blue);
 }
 
 .hidden-nav {
