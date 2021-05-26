@@ -83,6 +83,7 @@ firebase.auth().onAuthStateChanged((user) => {
         var uid = user.uid;
         console.log(user);
         db_getUserName();
+        db_getProjects();
         // ...
     } else {
         // User is signed out
@@ -105,6 +106,36 @@ function db_getUserName() {
             .then(() => {
                 console.log(name);
                 // TODO: Display user name on the home page "Hi <username>"
+            })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_getProjects() {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        let projects = [];
+        firebase
+            .database()
+            .ref("users/" + user.uid + "/projects")
+            .once("value", (snap) => {
+                let project = snap.val();
+                for (let title in project) {
+                    for (let description in project[title]) {
+                        projects.push({
+                            title: title,
+                            description: project[title][description],
+                        });
+                    }
+                }
+                // console.log(projects);
+            })
+            .then(() => {
+                projects.forEach((project) => {
+                    createProjectTile(project.title);
+                });
             })
             .catch((e) => {
                 throw e;
