@@ -89,7 +89,7 @@ listCreate.addEventListener("click", (e) => {
     const listTitle = listTitleField.value;
     if (listTitle !== "") {
         createList(listTitle);
-        modal.style.display = "none";
+        listModal.style.display = "none";
     }
 });
 
