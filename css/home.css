@@ -338,3 +338,18 @@ textarea {
     cursor: pointer;
     color: #029be4;
 }
+
+.modal-list {
+    display: none;
+    width: 350px;
+    font-size: 1.2rem;
+    position: relative;
+    margin-top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+}
+
+#modal-form-list {
+    position: absolute;
+}
