@@ -248,12 +248,10 @@ function db_getProjects() {
             .once("value", (snap) => {
                 let project = snap.val();
                 for (let title in project) {
-                    for (let description in project[title]) {
-                        projects.push({
-                            title: title,
-                            description: project[title][description],
-                        });
-                    }
+                    projects.push({
+                        title: title,
+                        description: project[title]["description"],
+                    });
                 }
             })
             .then(() => {
