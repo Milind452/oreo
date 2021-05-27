@@ -30,6 +30,8 @@ function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
 
+function createList(listTitle) {}
+
 function createProjectTile(title) {
     const projectTile = document.createElement("div");
     projectTile.classList.add("cards-grid__tile");
@@ -80,6 +82,15 @@ addListBtn.addEventListener("click", (e) => {
     e.preventDefault();
     listModal.style.display = "block";
     listTitleField.value = "";
+});
+
+listCreate.addEventListener("click", (e) => {
+    e.preventDefault();
+    const listTitle = listTitleField.value;
+    if (listTitle !== "") {
+        createList(listTitle);
+        modal.style.display = "none";
+    }
 });
 
 listClose.addEventListener("click", (e) => {
