@@ -169,7 +169,7 @@ submitBtn.addEventListener("click", (e) => {
                             })
                             .then(() => {
                                 isCreatingUser = false;
-                                window.location.href = "../home.html";
+                                window.location.href = "/oreo/home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
