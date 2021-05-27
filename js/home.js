@@ -257,6 +257,34 @@ function db_getProjects() {
             .then(() => {
                 projects.forEach((project) => {
                     createProjectTile(project.title);
+                    db_getLists(project.title);
+                });
+            })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_getLists(title) {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        let lists = [];
+        firebase
+            .database()
+            .ref("users/" + user.uid + "/projects/" + title)
+            .once("value", (snap) => {
+                let list = snap.val();
+                for (let listTitle in list) {
+                    if (listTitle === list[listTitle]["title"])
+                        lists.push({
+                            listTitle: listTitle,
+                        });
+                }
+            })
+            .then(() => {
+                lists.forEach((list) => {
+                    createList(list.listTitle);
                 });
             })
             .catch((e) => {
