@@ -344,7 +344,7 @@ textarea {
     width: 350px;
     font-size: 1.2rem;
     position: relative;
-    margin-top: 20px;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     overflow: visible;
