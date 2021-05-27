@@ -136,7 +136,6 @@ logoutBtn.addEventListener("click", (e) => {
             window.location.href = "/index.html";
         })
         .catch((error) => {
-            // An error happened.
             console.log("Logout failed");
         });
 });
@@ -149,10 +148,8 @@ firebase.auth().onAuthStateChanged((user) => {
         console.log(user);
         db_getUserName();
         db_getProjects();
-        // ...
     } else {
         // User is signed out
-        // ...
         console.log("not logged in");
     }
 });
@@ -165,12 +162,9 @@ function db_getUserName() {
             .database()
             .ref("users/" + user.uid + "/name")
             .once("value", (snap) => {
-                // console.log(snap.val());
                 name = snap.val();
             })
             .then(() => {
-                // console.log(name);
-                // TODO: Display user name on the home page "Hi <username>"
                 setUserName(name);
             })
             .catch((e) => {
@@ -196,7 +190,6 @@ function db_getProjects() {
                         });
                     }
                 }
-                // console.log(projects);
             })
             .then(() => {
                 projects.forEach((project) => {

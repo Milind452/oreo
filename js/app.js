@@ -120,7 +120,6 @@ submitBtn.addEventListener("click", (e) => {
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
-                    // ...
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -179,14 +178,12 @@ submitBtn.addEventListener("click", (e) => {
                                 throw e;
                             });
                     }
-                    // ...
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage);
                     isCreatingUser = false;
-                    // ..
                 });
             console.log("SIGNUP");
             console.log("Name: " + name);
@@ -206,10 +203,8 @@ firebase.auth().onAuthStateChanged((user) => {
         // window.location.href = "/oreo/home.html";
         // VSCode
         window.location.href = "/home.html";
-        // ...
     } else {
         // User is signed out
-        // ...
         console.log("not logged in");
     }
 });
