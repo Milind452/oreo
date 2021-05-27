@@ -271,3 +271,28 @@ textarea {
 .hidden-main {
     display: none !important;
 }
+
+.list-btn-wrapper {
+    background-color: var(--main-blue2);
+    max-width: 200px;
+    padding: 30px;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.add-list-btn {
+    width: 100%;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    line-height: 48px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--main-light-blue);
+    transition: 0.2s ease-in-out;
+}
+
+.add-list-btn:hover {
+    background-color: #029be4;
+}
