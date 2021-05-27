@@ -25,12 +25,22 @@ const listModal = document.querySelector(".modal-list");
 const listTitleField = document.querySelector("#title-list");
 const listCreate = document.querySelector("#create-list");
 const listClose = document.querySelector("#close-list");
+const addListBtnWrapper = document.querySelector(".list-btn-wrapper");
 
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
 
-function createList(listTitle) {}
+function createList(listTitle) {
+    const list = document.createElement("div");
+    list.classList.add("list");
+    list.innerHTML = `<div class="list-title">${listTitle}</div>
+                        <div class="task-pane"></div>
+                        <a class="add-task-btn btn">
+                            + Add new task
+                        </a>`;
+    addListBtnWrapper.insertAdjacentElement("beforebegin", list);
+}
 
 function createProjectTile(title) {
     const projectTile = document.createElement("div");
