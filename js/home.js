@@ -82,19 +82,9 @@ addListBtn.addEventListener("click", (e) => {
     listTitleField.value = "";
 });
 
-close.addEventListener("click", (e) => {
+listClose.addEventListener("click", (e) => {
     e.preventDefault();
-    modal.style.display = "none";
-    if (create.textContent === "Save") {
-        title = titleField.value;
-        description = descriptionField.value;
-        if (title !== "") {
-            createProjectTile(title);
-            modal.style.display = "none";
-            db_createProject(title, description);
-        }
-    }
-    create.textContent = "Create";
+    listModal.style.display = "none";
 });
 
 addTileBtn.addEventListener("click", (e) => {
@@ -116,9 +106,19 @@ create.addEventListener("click", (e) => {
     create.textContent = "Create";
 });
 
-listClose.addEventListener("click", (e) => {
+close.addEventListener("click", (e) => {
     e.preventDefault();
-    listModal.style.display = "none";
+    modal.style.display = "none";
+    if (create.textContent === "Save") {
+        title = titleField.value;
+        description = descriptionField.value;
+        if (title !== "") {
+            createProjectTile(title);
+            modal.style.display = "none";
+            db_createProject(title, description);
+        }
+    }
+    create.textContent = "Create";
 });
 
 cardsGrid.addEventListener("click", (e) => {
