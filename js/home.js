@@ -100,6 +100,7 @@ listCreate.addEventListener("click", (e) => {
     if (listTitle !== "") {
         createList(listTitle);
         listModal.style.display = "none";
+        db_createList(listTitle);
     }
 });
 
@@ -286,6 +287,25 @@ function db_deleteProject(title) {
         const db = firebase.database();
         db.ref("users/" + user.uid + "/projects/" + title)
             .remove()
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_createList(listTitle) {
+    const title = titleName.textContent;
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        // TODO: Add details to db in proper order
+        const db = firebase.database();
+        db.ref("users/" + user.uid + "/projects/" + title + "/" + listTitle)
+            .update({
+                title: listTitle,
+            })
+            .then(() => {
+                console.log("success");
+            })
             .catch((e) => {
                 throw e;
             });
