@@ -11,7 +11,8 @@ const close = document.querySelector("#close");
 const hamburger = document.querySelector("#hamburger");
 const navWrapper = document.querySelector(".nav-wrapper");
 const titleWrapper = document.querySelector(".title-wrapper");
-const contentArea = document.querySelector(".content-area");
+const projectContentArea = document.querySelector("#project-content");
+const taskContentArea = document.querySelector("#task-content");
 
 const username = document.querySelector("#username");
 
@@ -41,7 +42,8 @@ hamburger.addEventListener("click", (e) => {
     e.preventDefault();
     navWrapper.classList.toggle("hidden-nav");
     titleWrapper.classList.toggle("hidden-content");
-    contentArea.classList.toggle("hidden-content");
+    projectContentArea.classList.toggle("hidden-content");
+    taskContentArea.classList.toggle("hidden-content");
 });
 
 addTileBtn.addEventListener("click", (e) => {

@@ -267,3 +267,7 @@ textarea {
 .fa-trash {
     padding: 5px;
 }
+
+.hidden-main {
+    display: none !important;
+}
