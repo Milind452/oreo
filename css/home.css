@@ -273,6 +273,7 @@ textarea {
 }
 
 .list-btn-wrapper {
+    display: none;
     background-color: var(--main-blue2);
     max-width: 200px;
     padding: 30px;
@@ -295,4 +296,25 @@ textarea {
 
 .add-list-btn:hover {
     background-color: #029be4;
+}
+
+.add-task-btn {
+    display: none;
+}
+
+.list {
+    background-color: var(--main-blue2);
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 200px;
+    height: 83vh;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.task-pane {
+    background-color: var(--main-white);
+    border-radius: 6px;
+    width: 100%;
+    height: 100%;
 }
