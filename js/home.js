@@ -20,6 +20,12 @@ const navSettings = document.querySelector("#nav-settings");
 const navHelp = document.querySelector("#nav-help");
 const titleName = document.querySelector("#title-name");
 
+const addListBtn = document.querySelector("#add-list");
+const listModal = document.querySelector(".modal-list");
+const listTitleField = document.querySelector("#title-list");
+const listCreate = document.querySelector("#create-list");
+const listClose = document.querySelector("#close-list");
+
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
@@ -68,6 +74,12 @@ cardsGrid.addEventListener("click", (e) => {
         taskContentArea.classList.toggle("hidden-main");
         titleName.textContent = projectName;
     }
+});
+
+addListBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    listModal.style.display = "block";
+    listTitleField.value = "";
 });
 
 addTileBtn.addEventListener("click", (e) => {
