@@ -273,9 +273,9 @@ textarea {
 }
 
 .list-btn-wrapper {
-    display: none;
     background-color: var(--main-blue2);
     max-width: 200px;
+    min-width: 200px;
     padding: 30px;
     text-align: center;
     font-size: 1.2rem;
@@ -298,18 +298,24 @@ textarea {
     background-color: #029be4;
 }
 
+.tasks-pane {
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    overflow-x: auto;
+}
+
 .add-task-btn {
     display: none;
 }
 
 .list {
     background-color: var(--main-blue2);
-    margin-top: 20px;
-    margin-left: 20px;
     width: 200px;
-    height: 83vh;
-    border-radius: 6px;
+    min-width: 200px;
+    height: 82vh;
     padding: 15px;
+    margin-left: 20px;
 }
 
 .task-pane {
