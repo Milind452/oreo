@@ -23,7 +23,9 @@ function createProjectTile(title) {
     const projectTile = document.createElement("div");
     projectTile.classList.add("cards-grid__tile");
     const count = cardsGrid.childElementCount;
-    projectTile.innerHTML = `${title}
+    projectTile.innerHTML = `<a id=${title} class="project-link">
+                                ${title}
+                            </a>
                             <div class="tile-links">
                             <a id="edit${count}" class="tile-links__action">
                                 <i class="fa fa-edit"></i>
