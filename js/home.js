@@ -13,6 +13,12 @@ const navWrapper = document.querySelector(".nav-wrapper");
 const titleWrapper = document.querySelector(".title-wrapper");
 const contentArea = document.querySelector(".content-area");
 
+const username = document.querySelector("#username");
+
+function setUserName(name) {
+    username.textContent = `Hi ${name}`;
+}
+
 function createProjectTile(title) {
     const projectTile = document.createElement("div");
     projectTile.classList.add("cards-grid__tile");
@@ -161,8 +167,9 @@ function db_getUserName() {
                 name = snap.val();
             })
             .then(() => {
-                console.log(name);
+                // console.log(name);
                 // TODO: Display user name on the home page "Hi <username>"
+                setUserName(name);
             })
             .catch((e) => {
                 throw e;
