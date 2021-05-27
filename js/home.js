@@ -52,11 +52,22 @@ create.addEventListener("click", (e) => {
         modal.style.display = "none";
         db_createProject(title, description);
     }
+    create.textContent = "Create";
 });
 
 close.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "none";
+    if (create.textContent === "Save") {
+        title = titleField.value;
+        description = descriptionField.value;
+        if (title !== "") {
+            createProjectTile(title);
+            modal.style.display = "none";
+            db_createProject(title, description);
+        }
+    }
+    create.textContent = "Create";
 });
 
 cardsGrid.addEventListener("click", (e) => {
@@ -71,6 +82,34 @@ cardsGrid.addEventListener("click", (e) => {
         ) {
             projectTile.remove();
             db_deleteProject(title);
+        }
+    }
+});
+
+cardsGrid.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target && e.target.parentElement.id.match(/^edit[0-9]+$/)) {
+        const projectTile = e.target.parentElement.parentElement.parentElement;
+        const oldTitle = projectTile.innerText;
+        let oldDescription;
+        const user = firebase.auth().currentUser;
+        if (user !== null) {
+            const db = firebase.database();
+            db.ref("users/" + user.uid + "/projects/" + oldTitle)
+                .once("value", (snap) => {
+                    oldDescription = snap.val().description;
+                    modal.style.display = "block";
+                    titleField.value = oldTitle;
+                    descriptionField.value = oldDescription;
+                    create.textContent = "Save";
+                })
+                .then(() => {
+                    projectTile.remove();
+                    db_deleteProject(oldTitle);
+                })
+                .catch((e) => {
+                    throw e;
+                });
         }
     }
 });
