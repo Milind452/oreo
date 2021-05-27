@@ -169,9 +169,9 @@ submitBtn.addEventListener("click", (e) => {
                             .then(() => {
                                 isCreatingUser = false;
                                 // Github
-                                // window.location.href = "/oreo/home.html";
+                                window.location.href = "/oreo/home.html";
                                 // VSCode
-                                window.location.href = "/home.html";
+                                // window.location.href = "/home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
@@ -200,9 +200,9 @@ firebase.auth().onAuthStateChanged((user) => {
         var uid = user.uid;
         console.log(user);
         // Github
-        // window.location.href = "/oreo/home.html";
+        window.location.href = "/oreo/home.html";
         // VSCode
-        window.location.href = "/home.html";
+        // window.location.href = "/home.html";
     } else {
         // User is signed out
         console.log("not logged in");
