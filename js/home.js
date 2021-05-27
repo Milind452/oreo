@@ -46,6 +46,16 @@ hamburger.addEventListener("click", (e) => {
     taskContentArea.classList.toggle("hidden-content");
 });
 
+cardsGrid.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target && e.target.className === "project-link") {
+        const projectLink = e.target;
+        const projectName = projectLink.id;
+        projectContentArea.classList.toggle("hidden-main");
+        taskContentArea.classList.toggle("hidden-main");
+    }
+});
+
 addTileBtn.addEventListener("click", (e) => {
     e.preventDefault();
     modal.style.display = "block";
