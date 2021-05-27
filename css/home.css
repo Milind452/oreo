@@ -44,6 +44,11 @@ body {
     border-bottom: 2px solid var(--main-blue3);
 }
 
+#username {
+    color: #02ccba;
+    font-style: normal;
+}
+
 .fa-user {
     font-size: 10rem !important;
 }
