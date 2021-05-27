@@ -23,7 +23,7 @@ body {
     height: 100%;
     width: 100%;
     max-width: 300px;
-    background-color: var(--main-blue2);
+    background-color: var(--main-blue1);
     position: absolute;
     z-index: 10;
     transform: translateX(0);
@@ -46,6 +46,30 @@ body {
 
 .fa-user {
     font-size: 10rem !important;
+}
+
+.nav-content {
+    width: 100%;
+}
+
+.link {
+    width: 100%;
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--main-blue3);
+    transition: 0.2s ease-in-out;
+}
+
+.link:hover {
+    background-color: var(--main-blue2);
+    color: var(--main-light-blue);
+}
+
+.link i {
+    padding-left: 10px;
+    padding-right: 30px;
 }
 
 .main-content {
