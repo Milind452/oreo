@@ -169,7 +169,7 @@ submitBtn.addEventListener("click", (e) => {
                             })
                             .then(() => {
                                 isCreatingUser = false;
-                                window.location.href = "../html/home.html";
+                                window.location.href = "../home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
@@ -199,7 +199,7 @@ firebase.auth().onAuthStateChanged((user) => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(user);
-        window.location.href = "../html/home.html";
+        window.location.href = "../home.html";
         // ...
     } else {
         // User is signed out
