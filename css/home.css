@@ -47,6 +47,7 @@ body {
 #username {
     color: #02ccba;
     font-style: normal;
+    padding-bottom: 10px;
 }
 
 .fa-user {
