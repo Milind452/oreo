@@ -232,6 +232,15 @@ textarea {
     cursor: pointer;
 }
 
+.project-link {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.project-link:hover {
+    font-size: 1.3rem;
+}
+
 .hamburger-btn {
     cursor: pointer;
     font-size: 1.5rem;
