@@ -15,6 +15,7 @@ const projectContentArea = document.querySelector("#project-content");
 const taskContentArea = document.querySelector("#task-content");
 
 const username = document.querySelector("#username");
+const titleName = document.querySelector("#title-name");
 
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
@@ -53,6 +54,7 @@ cardsGrid.addEventListener("click", (e) => {
         const projectName = projectLink.id;
         projectContentArea.classList.toggle("hidden-main");
         taskContentArea.classList.toggle("hidden-main");
+        titleName.textContent = projectName;
     }
 });
 
