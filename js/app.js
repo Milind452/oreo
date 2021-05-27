@@ -169,7 +169,10 @@ submitBtn.addEventListener("click", (e) => {
                             })
                             .then(() => {
                                 isCreatingUser = false;
-                                window.location.href = "/oreo/home.html";
+                                // Github
+                                // window.location.href = "/oreo/home.html";
+                                // VSCode
+                                window.location.href = "/home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
@@ -199,7 +202,10 @@ firebase.auth().onAuthStateChanged((user) => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(user);
-        window.location.href = "/oreo/home.html";
+        // Github
+        // window.location.href = "/oreo/home.html";
+        // VSCode
+        window.location.href = "/home.html";
         // ...
     } else {
         // User is signed out

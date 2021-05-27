@@ -122,7 +122,10 @@ logoutBtn.addEventListener("click", (e) => {
         .then(() => {
             // Sign-out successful.
             console.log("Successful logout");
-            window.location.href = "/oreo";
+            // Github
+            // window.location.href = "/oreo";
+            // VSCode
+            window.location.href = "/index.html";
         })
         .catch((error) => {
             // An error happened.
