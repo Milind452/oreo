@@ -15,6 +15,9 @@ const projectContentArea = document.querySelector("#project-content");
 const taskContentArea = document.querySelector("#task-content");
 
 const username = document.querySelector("#username");
+const navHome = document.querySelector("#nav-home");
+const navSettings = document.querySelector("#nav-settings");
+const navHelp = document.querySelector("#nav-help");
 const titleName = document.querySelector("#title-name");
 
 function setUserName(name) {
@@ -45,6 +48,15 @@ hamburger.addEventListener("click", (e) => {
     titleWrapper.classList.toggle("hidden-content");
     projectContentArea.classList.toggle("hidden-content");
     taskContentArea.classList.toggle("hidden-content");
+});
+
+navHome.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (projectContentArea.classList.contains("hidden-main")) {
+        projectContentArea.classList.remove("hidden-main");
+        taskContentArea.classList.add("hidden-main");
+        titleName.textContent = "Boards";
+    }
 });
 
 cardsGrid.addEventListener("click", (e) => {
