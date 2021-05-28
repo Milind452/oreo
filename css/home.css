@@ -353,3 +353,13 @@ textarea {
 #modal-form-list {
     position: absolute;
 }
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-delete {
+    cursor: pointer;
+    color: var(--main-light-blue);
+}

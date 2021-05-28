@@ -34,7 +34,14 @@ function setUserName(name) {
 function createList(listTitle) {
     const list = document.createElement("div");
     list.classList.add("list");
-    list.innerHTML = `<div class="list-title">${listTitle}</div>
+    list.innerHTML = `<div class="list-header">
+                        <div class="list-title">${listTitle}</div>
+                            <div class="list-links">
+                                <a class="list-delete">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+                            </div>
+                        </div>
                         <div class="task-pane"></div>
                         <a class="add-task-btn btn">
                             + Add new task
