@@ -28,6 +28,8 @@ const listCreate = document.querySelector("#create-list");
 const listClose = document.querySelector("#close-list");
 const addListBtnWrapper = document.querySelector(".list-btn-wrapper");
 
+const addTaskBtn = document.querySelector("#add-task");
+
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
@@ -102,6 +104,11 @@ navHome.addEventListener("click", (e) => {
             list.remove();
         });
     }
+});
+
+addTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    createTask("Task3", "31 Aug, 2021");
 });
 
 cardsGrid.addEventListener("click", (e) => {
