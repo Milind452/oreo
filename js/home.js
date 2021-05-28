@@ -28,13 +28,13 @@ const listCreate = document.querySelector("#create-list");
 const listClose = document.querySelector("#close-list");
 const addListBtnWrapper = document.querySelector(".list-btn-wrapper");
 
-const addTaskBtn = document.querySelector("#add-task");
+const addTaskBtn = document.querySelector(".add-task-btn");
 
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
 
-function createTask(taskTitle, deadline) {
+function createTask(taskTitle, deadline, taskPane) {
     const task = document.createElement("div");
     task.classList.add("task");
     task.innerHTML = `<div class="task-header">
@@ -46,7 +46,7 @@ function createTask(taskTitle, deadline) {
                     <div class="task-deadline">
                         14 Jun, 2021
                     </div>`;
-    tasksPane.appendChild(task);
+    taskPane.appendChild(task);
 }
 
 function createList(listTitle) {
@@ -106,9 +106,17 @@ navHome.addEventListener("click", (e) => {
     }
 });
 
-addTaskBtn.addEventListener("click", (e) => {
+tasksPane.addEventListener("click", (e) => {
     e.preventDefault();
-    createTask("Task3", "31 Aug, 2021");
+    if (e.target && e.target.className === "add-task-btn btn") {
+        const list = e.target.parentElement;
+        const listChildren = list.children;
+        for (let div of listChildren) {
+            if (div.className === "task-pane") {
+                createTask("Task3", "31 Aug, 2021", div);
+            }
+        }
+    }
 });
 
 cardsGrid.addEventListener("click", (e) => {
