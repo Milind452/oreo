@@ -34,6 +34,7 @@ const taskTitleField = document.querySelector("#title-task");
 const taskDeadlineField = document.querySelector("#deadline");
 const taskCreate = document.querySelector("#create-task");
 const taskClose = document.querySelector("#close-task");
+let listChildren;
 
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
@@ -43,13 +44,13 @@ function createTask(taskTitle, deadline, taskPane) {
     const task = document.createElement("div");
     task.classList.add("task");
     task.innerHTML = `<div class="task-header">
-                        <div class="task-title">Task2</div>
+                        <div class="task-title">${taskTitle}</div>
                             <div class="task-links">
                                 <a class="task-action"></a>
                             </div>
                     </div>
                     <div class="task-deadline">
-                        14 Jun, 2021
+                        ${deadline}
                     </div>`;
     taskPane.appendChild(task);
 }
@@ -66,7 +67,7 @@ function createList(listTitle) {
                             </div>
                         </div>
                         <div class="task-pane"></div>
-                        <a class="add-task-btn btn">
+                        <a class="add-task-btn">
                             + Add new task
                         </a>`;
     addListBtnWrapper.insertAdjacentElement("beforebegin", list);
@@ -118,10 +119,19 @@ tasksPane.addEventListener("click", (e) => {
         taskTitleField.value = "";
         taskDeadlineField.value = "";
         const list = e.target.parentElement;
-        const listChildren = list.children;
+        listChildren = list.children;
+    }
+});
+
+taskCreate.addEventListener("click", (e) => {
+    e.preventDefault();
+    const taskTitle = taskTitleField.value;
+    const taskDeadline = taskDeadlineField.value;
+    if (taskTitle !== "" && taskDeadline !== "") {
+        taskModal.style.display = "none";
         for (let div of listChildren) {
             if (div.className === "task-pane") {
-                // createTask("Task3", "31 Aug, 2021", div);
+                createTask(taskTitle, taskDeadline, div);
             }
         }
     }
