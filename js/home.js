@@ -129,9 +129,16 @@ taskCreate.addEventListener("click", (e) => {
     const taskDeadline = taskDeadlineField.value;
     if (taskTitle !== "" && taskDeadline !== "") {
         taskModal.style.display = "none";
+        let listTitle = "";
+        for (let div of listChildren) {
+            if (div.className === "list-header") {
+                listTitle = div.innerText;
+            }
+        }
         for (let div of listChildren) {
             if (div.className === "task-pane") {
                 createTask(taskTitle, taskDeadline, div);
+                db_createTask(taskTitle, taskDeadline, listTitle);
             }
         }
     }
