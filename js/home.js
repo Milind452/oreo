@@ -20,6 +20,7 @@ const navSettings = document.querySelector("#nav-settings");
 const navHelp = document.querySelector("#nav-help");
 const titleName = document.querySelector("#title-name");
 
+const taskPane = document.querySelector(".tasks-pane");
 const addListBtn = document.querySelector("#add-list");
 const listModal = document.querySelector(".modal-list");
 const listTitleField = document.querySelector("#title-list");
@@ -119,6 +120,23 @@ listCreate.addEventListener("click", (e) => {
 listClose.addEventListener("click", (e) => {
     e.preventDefault();
     listModal.style.display = "none";
+});
+
+taskPane.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target && e.target.parentElement.className === "list-delete") {
+        const listHeader = e.target.parentElement.parentElement.parentElement;
+        const list = listHeader.parentElement;
+        const listTitle = listHeader.innerText;
+        if (
+            confirm(
+                `Are you sure you want to delete the list ${listTitle}. Once deleted, it cannot be recovered.`
+            )
+        ) {
+            list.remove();
+            db_deleteList(listTitle);
+        }
+    }
 });
 
 addTileBtn.addEventListener("click", (e) => {
@@ -343,6 +361,19 @@ function db_createList(listTitle) {
             .then(() => {
                 console.log("success");
             })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_deleteList(listTitle) {
+    const title = titleName.textContent;
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        const db = firebase.database();
+        db.ref("users/" + user.uid + "/projects/" + title + "/" + listTitle)
+            .remove()
             .catch((e) => {
                 throw e;
             });
