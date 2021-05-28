@@ -399,3 +399,18 @@ textarea {
     cursor: pointer;
     color: var(--main-light-blue);
 }
+
+#modal-form-task {
+    position: absolute;
+}
+
+.modal-task {
+    /* display: none; */
+    width: 350px;
+    font-size: 1.2rem;
+    position: relative;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: visible;
+}
