@@ -20,7 +20,7 @@ const navSettings = document.querySelector("#nav-settings");
 const navHelp = document.querySelector("#nav-help");
 const titleName = document.querySelector("#title-name");
 
-const taskPane = document.querySelector(".tasks-pane");
+const tasksPane = document.querySelector(".tasks-pane");
 const addListBtn = document.querySelector("#add-list");
 const listModal = document.querySelector(".modal-list");
 const listTitleField = document.querySelector("#title-list");
@@ -46,7 +46,7 @@ function createTask(taskTitle, deadline) {
                     <div class="task-deadline">
                         14 Jun, 2021
                     </div>`;
-    taskPane.appendChild(task);
+    tasksPane.appendChild(task);
 }
 
 function createList(listTitle) {
@@ -144,7 +144,7 @@ listClose.addEventListener("click", (e) => {
     listModal.style.display = "none";
 });
 
-taskPane.addEventListener("click", (e) => {
+tasksPane.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target && e.target.parentElement.className === "list-delete") {
         const listHeader = e.target.parentElement.parentElement.parentElement;
