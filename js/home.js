@@ -32,6 +32,21 @@ function setUserName(name) {
     username.textContent = `Hi ${name}`;
 }
 
+function createTask(taskTitle, deadline) {
+    const task = document.createElement("div");
+    task.classList.add("task");
+    task.innerHTML = `<div class="task-header">
+                        <div class="task-title">Task2</div>
+                            <div class="task-links">
+                                <a class="task-action"></a>
+                            </div>
+                    </div>
+                    <div class="task-deadline">
+                        14 Jun, 2021
+                    </div>`;
+    taskPane.appendChild(task);
+}
+
 function createList(listTitle) {
     const list = document.createElement("div");
     list.classList.add("list");
