@@ -74,6 +74,10 @@ navHome.addEventListener("click", (e) => {
         projectContentArea.classList.remove("hidden-main");
         taskContentArea.classList.add("hidden-main");
         titleName.textContent = "Boards";
+        const listsArray = document.querySelectorAll(".list");
+        listsArray.forEach((list) => {
+            list.remove();
+        });
     }
 });
 
@@ -85,6 +89,7 @@ cardsGrid.addEventListener("click", (e) => {
         projectContentArea.classList.toggle("hidden-main");
         taskContentArea.classList.toggle("hidden-main");
         titleName.textContent = projectName;
+        db_getLists(projectName);
     }
 });
 
@@ -257,7 +262,6 @@ function db_getProjects() {
             .then(() => {
                 projects.forEach((project) => {
                     createProjectTile(project.title);
-                    db_getLists(project.title);
                 });
             })
             .catch((e) => {
