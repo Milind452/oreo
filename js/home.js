@@ -29,6 +29,11 @@ const listClose = document.querySelector("#close-list");
 const addListBtnWrapper = document.querySelector(".list-btn-wrapper");
 
 const addTaskBtn = document.querySelector(".add-task-btn");
+const taskModal = document.querySelector(".modal-task");
+const taskTitleField = document.querySelector("#title-task");
+const taskDeadlineField = document.querySelector("#deadline");
+const taskCreate = document.querySelector("#create-task");
+const taskClose = document.querySelector("#close-task");
 
 function setUserName(name) {
     username.textContent = `Hi ${name}`;
@@ -109,14 +114,22 @@ navHome.addEventListener("click", (e) => {
 tasksPane.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target && e.target.className === "add-task-btn") {
+        taskModal.style.display = "block";
+        taskTitleField.value = "";
+        taskDeadlineField.value = "";
         const list = e.target.parentElement;
         const listChildren = list.children;
         for (let div of listChildren) {
             if (div.className === "task-pane") {
-                createTask("Task3", "31 Aug, 2021", div);
+                // createTask("Task3", "31 Aug, 2021", div);
             }
         }
     }
+});
+
+taskClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    taskModal.style.display = "none";
 });
 
 cardsGrid.addEventListener("click", (e) => {
