@@ -108,7 +108,7 @@ navHome.addEventListener("click", (e) => {
 
 tasksPane.addEventListener("click", (e) => {
     e.preventDefault();
-    if (e.target && e.target.className === "add-task-btn btn") {
+    if (e.target && e.target.className === "add-task-btn") {
         const list = e.target.parentElement;
         const listChildren = list.children;
         for (let div of listChildren) {
