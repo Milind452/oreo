@@ -432,3 +432,31 @@ function db_deleteList(listTitle) {
             });
     }
 }
+
+function db_createTask(taskTitle, taskDeadline, listTitle) {
+    const title = titleName.textContent;
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        // TODO: Add details to db in proper order
+        const db = firebase.database();
+        db.ref(
+            "users/" +
+                user.uid +
+                "/projects/" +
+                title +
+                "/" +
+                listTitle +
+                "/" +
+                taskTitle
+        )
+            .update({
+                deadline: taskDeadline,
+            })
+            .then(() => {
+                console.log("success");
+            })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
