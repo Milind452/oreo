@@ -153,6 +153,24 @@ taskClose.addEventListener("click", (e) => {
     taskModal.style.display = "none";
 });
 
+tasksPane.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target && e.target.innerText === "Delete") {
+        const taskHeader = e.target.parentElement.parentElement.parentElement;
+        const list = taskHeader.parentElement.parentElement.parentElement;
+        const taskTitle = taskHeader.innerText.split("\n")[0];
+        const listTitle = list.children[0].innerText;
+        if (
+            confirm(
+                `Are you sure you want to delete the task ${taskTitle}. Once deleted, it cannot be recovered.`
+            )
+        ) {
+            taskHeader.parentElement.remove();
+            // db_deleteTask();
+        }
+    }
+});
+
 cardsGrid.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target && e.target.className === "project-link") {
