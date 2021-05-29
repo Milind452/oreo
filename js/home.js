@@ -166,7 +166,7 @@ tasksPane.addEventListener("click", (e) => {
             )
         ) {
             taskHeader.parentElement.remove();
-            // db_deleteTask();
+            db_deleteTask(taskTitle, listTitle);
         }
     }
 });
@@ -521,6 +521,28 @@ function db_createTask(taskTitle, taskDeadline, listTitle) {
             .then(() => {
                 console.log("success");
             })
+            .catch((e) => {
+                throw e;
+            });
+    }
+}
+
+function db_deleteTask(taskTitle, listTitle) {
+    const title = titleName.textContent;
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        const db = firebase.database();
+        db.ref(
+            "users/" +
+                user.uid +
+                "/projects/" +
+                title +
+                "/" +
+                listTitle +
+                "/" +
+                taskTitle
+        )
+            .remove()
             .catch((e) => {
                 throw e;
             });
