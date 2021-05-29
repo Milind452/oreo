@@ -47,6 +47,10 @@ function createTask(taskTitle, deadline, taskPane) {
                         <div class="task-title">${taskTitle}</div>
                             <div class="task-links">
                                 <a class="task-action"></a>
+                                <div class="task-action__menu">
+                                    <a class="menu-action">Edit</a>
+                                    <a class="menu-action">Delete</a>
+                                </div>
                             </div>
                     </div>
                     <div class="task-deadline">
