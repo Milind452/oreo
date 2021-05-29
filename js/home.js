@@ -374,10 +374,47 @@ function db_getLists(title) {
             .then(() => {
                 lists.forEach((list) => {
                     createList(list.listTitle);
+                    db_getTasks(title, list.listTitle);
                 });
             })
             .catch((e) => {
                 throw e;
+            });
+    }
+}
+
+function db_getTasks(title, listTitle) {
+    const user = firebase.auth().currentUser;
+    if (user !== null) {
+        let tasks = [];
+        firebase
+            .database()
+            .ref("users/" + user.uid + "/projects/" + title + "/" + listTitle)
+            .once("value", (snap) => {
+                let task = snap.val();
+                for (let taskTitle in task) {
+                    if (Object.keys(task[taskTitle]).includes("deadline")) {
+                        tasks.push({
+                            taskTitle: taskTitle,
+                            deadline: task[taskTitle]["deadline"],
+                        });
+                    }
+                }
+            })
+            .then(() => {
+                tasks.forEach((task) => {
+                    console.log(task.taskTitle, task.deadline);
+                    for (let list of tasksPane.children) {
+                        if (list.children[0].innerText == listTitle) {
+                            console.log(list.children[1]);
+                            createTask(
+                                task.taskTitle,
+                                task.deadline,
+                                list.children[1]
+                            );
+                        }
+                    }
+                });
             });
     }
 }
