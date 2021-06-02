@@ -125,9 +125,13 @@ submitBtn.addEventListener("click", (e) => {
                     window.location.href = "/home.html";
                 })
                 .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
+                    if (error.code === "auth/user-not-found") {
+                        alert(
+                            "User does not exist. Please check if you entered the correct email id."
+                        );
+                    } else if (error.code === "auth/wrong-password") {
+                        alert("Wrong password.");
+                    }
                 });
         }
     } else {
