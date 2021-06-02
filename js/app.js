@@ -184,10 +184,9 @@ submitBtn.addEventListener("click", (e) => {
                     }
                 })
                 .catch((error) => {
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode, errorMessage);
-                    isCreatingUser = false;
+                    if (error.code === "auth/email-already-in-use") {
+                        alert(error.message);
+                    }
                 });
         }
     }
