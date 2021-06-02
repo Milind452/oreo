@@ -36,7 +36,7 @@ IssueTracker.prototype = {
 };
 
 function checkNameRequirements(name, nameIssueTracker) {
-    if (!name.match(/^[a-zA-Z0-9]+$/g)) {
+    if (!name.match(/^[a-zA-Z0-9 ]+$/g)) {
         nameIssueTracker.add("enter valid name");
     }
 }
