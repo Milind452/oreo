@@ -120,6 +120,10 @@ submitBtn.addEventListener("click", (e) => {
                 .then((userCredential) => {
                     // Signed in
                     var user = userCredential.user;
+                    // Github
+                    // window.location.href = "/oreo/home.html";
+                    // VSCode
+                    window.location.href = "/home.html";
                 })
                 .catch((error) => {
                     var errorCode = error.code;
@@ -200,10 +204,6 @@ firebase.auth().onAuthStateChanged((user) => {
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
         console.log(user);
-        // Github
-        // window.location.href = "/oreo/home.html";
-        // VSCode
-        window.location.href = "/home.html";
     } else {
         // User is signed out
         console.log("not logged in");
