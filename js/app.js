@@ -101,7 +101,6 @@ loginBtn.addEventListener("click", (e) => {
 submitBtn.addEventListener("click", (e) => {
     const status = submitBtn.innerText;
     if (status === "Login") {
-        console.log("Status: Login");
         const email = emailField.value;
         const password = passwordField.value;
         let passwordIssueTracker = new IssueTracker();
@@ -130,12 +129,8 @@ submitBtn.addEventListener("click", (e) => {
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage);
                 });
-            console.log("LOGIN");
-            console.log("Email: " + email);
-            console.log("Password: " + password);
         }
     } else {
-        console.log("Status: Signup");
         const name = nameField.value;
         const email = emailField.value;
         const password = passwordField.value;
@@ -190,10 +185,6 @@ submitBtn.addEventListener("click", (e) => {
                     console.log(errorCode, errorMessage);
                     isCreatingUser = false;
                 });
-            console.log("SIGNUP");
-            console.log("Name: " + name);
-            console.log("Email: " + email);
-            console.log("Password: " + password);
         }
     }
 });
@@ -203,9 +194,9 @@ firebase.auth().onAuthStateChanged((user) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
-        console.log(user);
+        // console.log(user);
     } else {
         // User is signed out
-        console.log("not logged in");
+        // console.log("not logged in");
     }
 });

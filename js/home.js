@@ -306,14 +306,14 @@ logoutBtn.addEventListener("click", (e) => {
         .signOut()
         .then(() => {
             // Sign-out successful.
-            console.log("Successful logout");
+            // console.log("Successful logout");
             // Github
             // window.location.href = "/oreo";
             // VSCode
             window.location.href = "/index.html";
         })
         .catch((error) => {
-            console.log("Logout failed");
+            // console.log("Logout failed");
         });
 });
 
@@ -322,12 +322,12 @@ firebase.auth().onAuthStateChanged((user) => {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         var uid = user.uid;
-        console.log(user);
+        // console.log(user);
         db_getUserName();
         db_getProjects();
     } else {
         // User is signed out
-        console.log("not logged in");
+        // console.log("not logged in");
     }
 });
 
@@ -425,10 +425,8 @@ function db_getTasks(title, listTitle) {
             })
             .then(() => {
                 tasks.forEach((task) => {
-                    console.log(task.taskTitle, task.deadline);
                     for (let list of tasksPane.children) {
                         if (list.children[0].innerText == listTitle) {
-                            console.log(list.children[1]);
                             createTask(
                                 task.taskTitle,
                                 task.deadline,
@@ -477,9 +475,6 @@ function db_createList(listTitle) {
             .update({
                 title: listTitle,
             })
-            .then(() => {
-                console.log("success");
-            })
             .catch((e) => {
                 throw e;
             });
@@ -517,9 +512,6 @@ function db_createTask(taskTitle, taskDeadline, listTitle) {
         )
             .update({
                 deadline: taskDeadline,
-            })
-            .then(() => {
-                console.log("success");
             })
             .catch((e) => {
                 throw e;
