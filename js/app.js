@@ -99,7 +99,6 @@ loginBtn.addEventListener("click", (e) => {
 });
 
 submitBtn.addEventListener("click", (e) => {
-    e.preventDefault();
     const status = submitBtn.innerText;
     if (status === "Login") {
         console.log("Status: Login");
@@ -113,6 +112,7 @@ submitBtn.addEventListener("click", (e) => {
         const passwordIssues = passwordIssueTracker.retrieve();
         emailField.setCustomValidity(emailIssues);
         passwordField.setCustomValidity(passwordIssues);
+        e.preventDefault();
         if (passwordIssues.length === 0 && emailIssues.length == 0) {
             firebase
                 .auth()
@@ -147,6 +147,7 @@ submitBtn.addEventListener("click", (e) => {
         nameField.setCustomValidity(nameIssues);
         emailField.setCustomValidity(emailIssues);
         passwordField.setCustomValidity(passwordIssues);
+        e.preventDefault();
         if (
             passwordIssues.length === 0 &&
             emailIssues.length === 0 &&
