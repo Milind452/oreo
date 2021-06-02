@@ -120,9 +120,9 @@ submitBtn.addEventListener("click", (e) => {
                     // Signed in
                     var user = userCredential.user;
                     // Github
-                    // window.location.href = "/oreo/home.html";
+                    window.location.href = "/oreo/home.html";
                     // VSCode
-                    window.location.href = "/home.html";
+                    // window.location.href = "/home.html";
                 })
                 .catch((error) => {
                     if (error.code === "auth/user-not-found") {
@@ -173,9 +173,9 @@ submitBtn.addEventListener("click", (e) => {
                             .then(() => {
                                 isCreatingUser = false;
                                 // Github
-                                // window.location.href = "/oreo/home.html";
+                                window.location.href = "/oreo/home.html";
                                 // VSCode
-                                window.location.href = "/home.html";
+                                // window.location.href = "/home.html";
                             })
                             .catch((e) => {
                                 isCreatingUser = false;
