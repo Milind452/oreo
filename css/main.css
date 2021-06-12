@@ -74,6 +74,7 @@ h2 span {
     justify-content: space-between;
     height: 100vh;
     background-color: var(--main-white);
+    overflow: hidden;
 }
 
 .left {
