@@ -17,6 +17,7 @@ body {
     top: 0;
     bottom: 0;
     position: absolute;
+    overflow: hidden;
 }
 
 .nav-wrapper {
